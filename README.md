@@ -1,9 +1,24 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
 
-### Design Model
+### Objective
+
+Ensure the ego car drives with the following requirements
+   1. Drives for 4.32 miles
+   2. Drives without any collision
+   3. Drives without exceeding the speed limit( In this case 50mph), doesn't exceed acceleration of 10 m/s^2 , doesn't exceed jerk of 10 m/s^3
+   4.Maintains a lane discipline not exceeding 3 seconds while changing the lanes
+   5.Smooth changing of lanes
 
 
+### Proposed Design 
+
+Following is a high-level design of the Path planning environment
+
+The given environment consists of a simulator that provides the input conditions for the ego car to make trajectory decisions.The input conditions include -current positions in XY coordinates, Frenet coordinates, yaw and velocity. Similar input data is also available for the other cars that are traveling in the adjacent lanes.  The car speed, acceleration and jerk is always ensured to maintain within the above constraints.
+
+
+Once the car reaches a state where the forward car is slower than the ego car and the relative velocity between ego car and forward car is less than 30, lane change state condition is reached. In the lane state condition as shown in the figure, various conditions are checked to determine the new lane for the car. During this computation, previous waypoints of the current car is also considered . THis is done to account for the elapsed duration during the computation time. In this way, the ego-car's new position is a function of the previous waypoints along with the input conditions of other cars in the lane.
 
    
 ### Simulator.
